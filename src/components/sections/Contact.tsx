@@ -3,10 +3,13 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 import { personalInfo, socialLinks } from '@/data/portfolio';
+import { siteConfig } from '@/data/site';
 import MagneticButton from '../animations/MagneticButton';
 import GlassCard from '../ui/GlassCard';
 
 export default function Contact() {
+  const { contact: config } = siteConfig;
+
   return (
     <section id="contact" className="py-24 px-6 md:px-8 border-t border-white/[0.03]">
       <div className="mx-auto max-w-4xl">
@@ -22,15 +25,15 @@ export default function Contact() {
             className="flex flex-col items-center gap-6"
           >
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500">
-              Get in Touch
+              {config.title}
             </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Let&apos;s build something
+              {config.subtitle.split(' ').slice(0, -1).join(' ')}
               <br />
-              <span className="text-gradient">meaningful together.</span>
+              <span className="text-gradient">{config.subtitle.split(' ').slice(-1)}</span>
             </h2>
             <p className="max-w-md text-xs md:text-sm text-zinc-400 leading-relaxed">
-              Whether you want to discuss a full-stack project, community leadership, event collaboration, or just say hello—my inbox is open.
+              {config.description}
             </p>
 
             {/* Magnetic Email CTA Button */}

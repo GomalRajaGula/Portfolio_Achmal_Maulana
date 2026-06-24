@@ -1,105 +1,188 @@
-import { motion } from 'framer-motion';
-import GlassCard from '../ui/GlassCard';
+"use client";
+
+import { useRef, useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { experiences } from '@/data/portfolio';
-import { Briefcase, Calendar } from 'lucide-react';
+import { siteConfig } from '@/data/site';
+import Image from 'next/image';
+import { Experience as ExperienceType } from '@/types';
+import { CheckCircle2 } from 'lucide-react';
+import GlassCard from '../ui/GlassCard';
 
-export default function Experience() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  } as const;
+function ExperienceItem({ exp, setActiveId }: { exp: ExperienceType; setActiveId: (id: string) => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 80,
-        damping: 18,
-      },
-    },
-  } as const;
+  useEffect(() => {
+    if (isInView) {
+      setActiveId(exp.id);
+    }
+  }, [isInView, exp.id, setActiveId]);
 
   return (
-    <section id="experience" className="relative py-24 px-6 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
-      <div className="mx-auto max-w-5xl">
-        {/* Section Header */}
-        <div className="mb-20 flex flex-col items-center text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500">
-            History
+    <div ref={ref} id={exp.id} className="min-h-[90vh] flex flex-col justify-center py-20 relative">
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, margin: "-10%" }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full"
+      >
+        <GlassCard 
+          className="p-8 md:p-12 lg:p-16 rounded-[2.5rem] bg-[#111112]/90 border-white/[0.05] shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative overflow-hidden" 
+          glowColor="transparent"
+        >
+          {/* Subtle background glow */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+          
+          <div className="flex flex-col gap-10 relative z-10">
+            {/* Header */}
+            <div className="space-y-5">
+              <h3 className="font-display text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tighter leading-[0.9]">
+                {exp.company}
+              </h3>
+              <p className="text-xl md:text-3xl text-indigo-400 font-bold tracking-tight">
+                {exp.role}
+              </p>
+              <div className="inline-block px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-bold text-zinc-300 uppercase tracking-[0.2em] mt-2 w-fit">
+                {exp.period}
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="space-y-6 mt-4">
+              {exp.description.map((desc, i) => (
+                <p key={i} className="text-zinc-400 text-base md:text-lg leading-relaxed text-pretty max-w-2xl font-sans">
+                  {desc}
+                </p>
+              ))}
+            </div>
+
+            {/* Achievements */}
+            {exp.achievements && exp.achievements.length > 0 && (
+              <div className="mt-8 space-y-6">
+                <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-zinc-500">Key Achievements</h4>
+                <ul className="flex flex-col gap-5">
+                  {exp.achievements.map((ach, i) => (
+                    <motion.li 
+                      key={i} 
+                      className="flex items-start gap-5 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.04]"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 + 0.3 }}
+                      viewport={{ once: true }}
+                    >
+                      <CheckCircle2 className="w-6 h-6 text-indigo-500 shrink-0 mt-0.5 shadow-[0_0_15px_rgba(99,102,241,0.5)] rounded-full" />
+                      <span className="text-zinc-300 font-medium leading-relaxed">{ach}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </GlassCard>
+      </motion.div>
+
+      {/* Floating Gallery Images (Parallax effect) */}
+      {exp.gallery && exp.gallery.length > 0 && (
+        <div className="absolute -right-8 lg:-right-32 top-1/2 -translate-y-1/2 w-64 md:w-80 h-[120%] pointer-events-none hidden 2xl:block z-0">
+          {exp.gallery.map((img, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-zinc-900"
+              style={{
+                top: `${(i + 1) * 25}%`,
+                left: i % 2 === 0 ? '0' : '60px',
+                width: '280px',
+                height: '180px',
+              }}
+              animate={{
+                y: [0, -30, 0],
+                rotate: [i % 2 === 0 ? -3 : 3, i % 2 === 0 ? 3 : -3, i % 2 === 0 ? -3 : 3]
+              }}
+              transition={{
+                duration: 8 + i,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <Image src={img} alt="Gallery item" fill sizes="280px" className="object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700 pointer-events-auto" />
+            </motion.div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function Experience() {
+  const [activeId, setActiveId] = useState<string>(experiences[0]?.id || '');
+  const { experience: config } = siteConfig;
+
+  return (
+    <section id="experience" className="relative py-32 px-4 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
+      <div className="mx-auto max-w-[1400px]">
+        {/* Header */}
+        <div className="mb-24">
+          <span className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
+            <span className="w-12 h-[1px] bg-indigo-500" />
+            {config.title}
           </span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-6xl uppercase">
-            CAREER & LEADERSHIP
+          <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white uppercase leading-[1]">
+            {config.subtitle}
           </h2>
         </div>
 
-        {/* Timeline Layout */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="space-y-16"
-        >
-          {experiences.map((exp, index) => {
-            const startYear = exp.period.split(' - ')[0];
-            return (
-              <motion.div
-                key={exp.id}
-                variants={itemVariants}
-                className="relative grid gap-8 md:grid-cols-12 items-start"
-              >
-                {/* Huge Watermark Year Background */}
-                <div className="absolute -top-12 left-0 pointer-events-none select-none z-0 hidden md:block">
-                  <span className="font-display text-[9rem] font-black leading-none text-white/[0.015] tracking-tighter uppercase">
-                    {startYear}
-                  </span>
-                </div>
-
-                {/* Left side Metadata - 4 columns */}
-                <div className="md:col-span-4 relative z-10 pt-2 flex flex-col gap-1 md:pr-8 md:text-right">
-                  <span className="flex items-center gap-1.5 md:justify-end text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
-                    <Calendar className="h-3.5 w-3.5 text-indigo-400" />
-                    {exp.period}
-                  </span>
-                  <span className="text-sm font-bold text-indigo-400 uppercase tracking-widest mt-1">
-                    {exp.company}
-                  </span>
-                </div>
-
-                {/* Right side Card - 8 columns */}
-                <div className="md:col-span-8 relative z-10">
-                  <GlassCard 
-                    className="border-white/[0.04] bg-white/[0.01] hover:border-indigo-500/20 transition-all duration-300"
-                    glowColor="rgba(99, 102, 241, 0.08)"
-                  >
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400">
-                          <Briefcase className="h-4 w-4" />
-                        </span>
-                        <h3 className="text-lg font-bold text-white uppercase tracking-wider">{exp.role}</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
+          
+          {/* Left Navigation (Sticky Scroll Spy) */}
+          <div className="hidden lg:block lg:col-span-4 relative">
+            <div className="sticky top-[20vh] pr-8">
+              <nav className="flex flex-col gap-10 relative py-8">
+                {/* Timeline Line */}
+                <div className="absolute left-[11px] top-10 bottom-10 w-[2px] bg-gradient-to-b from-white/0 via-white/10 to-white/0" />
+                
+                {experiences.map((exp) => {
+                  const isActive = activeId === exp.id;
+                  return (
+                    <button
+                      key={exp.id}
+                      onClick={() => {
+                        document.getElementById(exp.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }}
+                      className="group flex items-center gap-8 text-left relative z-10 w-full"
+                    >
+                      {/* Timeline Dot */}
+                      <div className={`w-6 h-6 rounded-full border-[3px] flex items-center justify-center shrink-0 transition-all duration-500 ${isActive ? 'bg-indigo-500 border-indigo-500 shadow-[0_0_30px_rgba(99,102,241,0.6)] scale-125' : 'bg-[#09090B] border-white/20 group-hover:border-white/50'}`}>
+                        <div className={`w-2 h-2 rounded-full transition-all duration-500 ${isActive ? 'bg-white' : 'bg-transparent'}`} />
                       </div>
 
-                      <ul className="mt-4 list-disc pl-4 space-y-2 text-xs md:text-sm text-zinc-400 leading-relaxed font-sans">
-                        {exp.description.map((bullet, i) => (
-                          <li key={i}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </GlassCard>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                      <div className="flex flex-col gap-1">
+                        <span className={`text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${isActive ? 'text-indigo-400' : 'text-zinc-600 group-hover:text-zinc-400'}`}>
+                          {exp.period}
+                        </span>
+                        <span className={`font-display text-2xl font-bold tracking-tight transition-all duration-300 ${isActive ? 'text-white translate-x-2' : 'text-zinc-500 group-hover:text-zinc-300'}`}>
+                          {exp.company}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+          </div>
+
+          {/* Right Content Stream */}
+          <div className="col-span-1 lg:col-span-8 flex flex-col relative z-10 lg:pl-12">
+            {experiences.map((exp) => (
+              <ExperienceItem 
+                key={exp.id} 
+                exp={exp} 
+                setActiveId={setActiveId} 
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

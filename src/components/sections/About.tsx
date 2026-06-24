@@ -2,11 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { BookOpen, Code, Trophy, Users, Terminal as TerminalIcon } from 'lucide-react';
+import { siteConfig } from '@/data/site';
 import GlassCard from '../ui/GlassCard';
 import GithubWidget from '../ui/GithubWidget';
 import { personalInfo } from '@/data/portfolio';
 
 export default function About() {
+  const { about: config } = siteConfig;
+
   const highlights = [
     {
       icon: <BookOpen className="h-4 w-4 text-indigo-400" />,
@@ -55,6 +58,15 @@ export default function About() {
   return (
     <section id="about" className="relative py-24 px-6 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
       <div className="mx-auto max-w-7xl">
+        <div className="mb-20">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
+            <span className="w-12 h-[1px] bg-indigo-500" />
+            {config.title}
+          </span>
+          <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white uppercase leading-[1]">
+            {config.subtitle}
+          </h2>
+        </div>
         <motion.div
           variants={containerVariants}
           initial="hidden"

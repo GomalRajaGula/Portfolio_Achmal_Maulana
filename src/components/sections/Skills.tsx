@@ -2,9 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { skills } from '@/data/portfolio';
+import { siteConfig } from '@/data/site';
 import GlassCard from '../ui/GlassCard';
 
 export default function Skills() {
+  const { skills: config } = siteConfig;
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -47,14 +50,14 @@ export default function Skills() {
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div className="lg:max-w-xl">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500">
-              Toolbox
+              {config.title}
             </span>
             <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-6xl uppercase">
-              TECHNICAL STACK
+              {config.subtitle}
             </h2>
           </div>
           <p className="max-w-md text-xs md:text-sm text-zinc-400 leading-relaxed font-sans">
-            Interactive modular elements. Click and drag the tag nodes to test the spring physics, or hover to view active details.
+            {config.description}
           </p>
         </div>
 

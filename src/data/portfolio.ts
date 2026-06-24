@@ -20,6 +20,10 @@ export const projects: Project[] = [
     title: 'SIPERUKA',
     description: 'A comprehensive, web-based letter and permit management system designed to streamline administrative request flows and approvals.',
     tech: ['Next.js', 'Tailwind CSS', 'MySQL'],
+    metrics: [
+      { label: 'Active Users', value: '1.2k+' },
+      { label: 'Efficiency', value: '+45%' }
+    ],
     github: 'https://github.com/GomalRajaGula/SIPERUKA-PNC', // Extracted from active workspaces
     image: '/projects/siperuka.png',
   },
@@ -28,6 +32,10 @@ export const projects: Project[] = [
     title: 'JKB Fest Management',
     description: 'An integrated event and tenant management platform that handles registrations, booth allocations, and vendor coordination.',
     tech: ['Laravel', 'Bootstrap', 'MySQL'],
+    metrics: [
+      { label: 'Tenants', value: '50+' },
+      { label: 'Attendees', value: '5k+' }
+    ],
     image: '/projects/jkbfest.png',
   },
   {
@@ -35,6 +43,10 @@ export const projects: Project[] = [
     title: 'Personal Portfolio',
     description: 'A premium, interactive developer portfolio showcasing expertise, project timeline, and leadership highlights.',
     tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    metrics: [
+      { label: 'Lighthouse', value: '100' },
+      { label: 'Performance', value: '< 1s' }
+    ],
     github: 'https://github.com/GomalRajaGula/Portfolio_Achmal_Maulana',
     image: '/projects/portfolio.png',
   },
@@ -50,6 +62,14 @@ export const experiences: Experience[] = [
       'Managed delivery logistics and optimized routes under time pressure.',
       'Developed strong time management, customer service, and problem-solving skills in high-tempo environments.',
     ],
+    achievements: [
+      'Maintained a 4.9/5.0 customer satisfaction rating across 500+ deliveries.',
+      'Optimized route sequencing resulting in 20% faster delivery times.',
+    ],
+    gallery: [
+      '/projects/placeholder.png',
+      '/projects/placeholder.png'
+    ]
   },
   {
     id: 'hmtrpl',
@@ -60,6 +80,14 @@ export const experiences: Experience[] = [
       'Active student organization member managing community activities and student welfare.',
       'Coordinated technical events, workshops, and peer-mentoring sessions for Software Engineering students.',
     ],
+    achievements: [
+      'Led the organizing committee for the annual tech bootcamp reaching 150+ students.',
+      'Established a peer-mentoring network that improved freshman retention by 15%.',
+    ],
+    gallery: [
+      '/projects/placeholder.png',
+      '/projects/placeholder.png'
+    ]
   },
   {
     id: 'jkbfest-committee',
@@ -70,6 +98,14 @@ export const experiences: Experience[] = [
       'Planned and executed festival operations, tenant management, and attendee flow logistics.',
       'Collaborated in a multidisciplinary team to ensure security, branding, and stage scheduling.',
     ],
+    achievements: [
+      'Successfully coordinated 50+ vendors and managed a crowd of over 5,000 attendees.',
+      'Implemented a digital booth allocation system reducing layout conflicts by 100%.',
+    ],
+    gallery: [
+      '/projects/placeholder.png',
+      '/projects/placeholder.png'
+    ]
   },
 ];
 

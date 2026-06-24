@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   description: string;
   tech: string[];
+  metrics?: { label: string; value: string }[];
   link?: string;
   github?: string;
   image?: string;
@@ -14,6 +15,8 @@ export interface Experience {
   company: string;
   period: string;
   description: string[];
+  achievements?: string[];
+  gallery?: string[];
 }
 
 export interface SkillGroup {
@@ -27,4 +30,36 @@ export interface BentoItem {
   description: string;
   icon: string;
   size: 'small' | 'medium' | 'large';
+}
+
+export interface SectionHeader {
+  title: string;
+  subtitle: string;
+  description?: string;
+}
+
+export interface SiteConfig {
+  hero: {
+    badge: string;
+    headingText1: string;
+    headingText2: string;
+    description: string;
+    primaryButton: string;
+    secondaryButton: string;
+    profile: {
+      name: string;
+      title: string;
+      currentRoleLabel: string;
+      currentRole: string;
+      techStackLabel: string;
+      techStack: string[];
+      location: string;
+    };
+  };
+  projects: SectionHeader;
+  experience: SectionHeader;
+  beyondCoding: SectionHeader;
+  contact: SectionHeader;
+  about: SectionHeader;
+  skills: SectionHeader;
 }
