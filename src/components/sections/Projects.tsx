@@ -48,56 +48,77 @@ export default function Projects() {
                     className="object-cover object-center transition-transform duration-[2s] ease-out group-hover:scale-105"
                     priority={i === 0}
                   />
-                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-12 mt-8 lg:mt-10 px-2 md:px-4 mb-2">
-                  <div className="flex flex-col gap-5 flex-1 w-full min-w-0">
-                    <h3 className="font-display text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-base text-zinc-400 leading-[1.8] font-sans max-w-[400px] text-pretty">
-                      {project.description}
-                    </p>
-                    
-                    {/* Tech stack tags */}
-                    <div className="mt-2 flex flex-wrap gap-2.5">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3.5 py-1.5 text-[11px] font-semibold text-zinc-300 uppercase tracking-wider"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                </div>
 
-                  {/* Index & Action Links */}
-                  <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-6 shrink-0">
-                    <span className="font-display text-6xl lg:text-7xl font-black text-white/5 select-none tracking-tighter leading-none order-2 lg:order-1">
-                      0{i + 1}
-                    </span>
-                    <div className="flex gap-3 order-1 lg:order-2">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-zinc-400 hover:text-white transition-colors p-3 rounded-full bg-white/[0.03] hover:bg-white/10 ring-1 ring-white/[0.05] hover:ring-white/20"
-                          aria-label="GitHub Repository"
-                        >
-                          <Github className="h-5 w-5" />
-                        </a>
-                      )}
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-zinc-400 hover:text-white transition-colors p-3 rounded-full bg-white/[0.03] hover:bg-white/10 ring-1 ring-white/[0.05] hover:ring-white/20"
-                          aria-label="Live Project"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                        </a>
-                      )}
+                {/* Readability Gradients */}
+                <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-[70%] bg-gradient-to-t from-black via-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-1000" />
+                <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] rounded-[2.5rem] pointer-events-none" />
+
+                {/* Top Badge */}
+                <div className="absolute top-8 left-8 md:top-12 md:left-12 flex items-center gap-5 z-20">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full backdrop-blur-xl bg-white/10 border border-white/20 flex items-center justify-center font-display text-xl md:text-2xl font-bold text-white shadow-2xl">
+                    {i + 1}
+                  </div>
+                  <div className="hidden md:block h-[1px] w-12 bg-white/30" />
+                  <span className="hidden md:block text-white/80 uppercase tracking-[0.3em] text-xs font-bold drop-shadow-md">
+                    Featured Case
+                  </span>
+                </div>
+
+                {/* Main Content Area */}
+                <div className="absolute inset-0 p-6 md:p-12 lg:p-16 flex flex-col justify-end z-20">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end w-full">
+                    
+                    {/* Left side: Title & Description */}
+                    <div className="lg:col-span-7 flex flex-col gap-6">
+                      <h3 className="font-display text-5xl md:text-7xl lg:text-[6rem] font-extrabold text-white tracking-tighter uppercase leading-[0.9] drop-shadow-2xl">
+                        {project.title}
+                      </h3>
+                      <p className="text-base md:text-lg lg:text-xl text-zinc-300 max-w-2xl leading-relaxed text-pretty font-sans">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Right side: Tech Stack & Actions */}
+                    <div className="lg:col-span-5 flex flex-col lg:items-end gap-8 pb-2">
+                      {/* Tech stack tags */}
+                      <div className="flex flex-wrap lg:justify-end gap-3">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-4 py-2 rounded-full backdrop-blur-md bg-white/10 border border-white/10 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white shadow-lg"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex flex-wrap items-center gap-4 w-full lg:w-auto">
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 lg:flex-none h-14 px-8 rounded-full bg-white text-black flex items-center justify-center gap-3 font-bold uppercase tracking-[0.15em] text-xs hover:bg-zinc-200 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl"
+                          >
+                            View Live <ExternalLink className="w-4 h-4" />
+                          </a>
+                        )}
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="h-14 w-14 rounded-full backdrop-blur-md bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 shrink-0 shadow-xl"
+                            aria-label="GitHub Repository"
+                          >
+                            <Github className="w-5 h-5" />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
