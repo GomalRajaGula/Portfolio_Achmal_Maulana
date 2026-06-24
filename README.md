@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Achmal Maulana - Personal Portfolio
 
-## Getting Started
+A premium, interactive developer portfolio built with Next.js 15, Tailwind CSS, and Framer Motion. This portfolio goes beyond standard templates to showcase my identity as a Full Stack Developer, Student Leader, and Event Organizer—emphasizing real-world operational impact over just listing technologies.
 
-First, run the development server:
+![Portfolio Preview](/public/projects/portfolio.png) *(Note: You can replace this path with an actual preview image if available)*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Technologies Used
+
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router, Turbopack)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Smooth Scrolling:** [Lenis](https://lenis.studiofreight.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+## ✨ Key Features
+
+- **Impact-Driven Project Showcase:** Focuses on real-world solutions like *SIPERUKA* (Campus Administration System) and *JKB Fest Management*.
+- **Premium Aesthetics:** Dark mode by default with glassmorphism effects, ambient glows, and modern typography.
+- **Fluid Micro-Interactions:** Custom `MagneticButton`, scroll progress trackers, and 3D tilt effects on profile cards.
+- **Smooth Scrolling:** Integrated Lenis for a seamless navigational experience.
+- **Centralized Data Management:** All portfolio content is managed easily via `src/data/portfolio.ts` and `src/data/site.ts`.
+
+## 🛠️ Getting Started
+
+To run this project locally on your machine:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/GomalRajaGula/Portfolio_Achmal_Maulana.git
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd Portfolio_Achmal_Maulana
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the application:**
+   Visit [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+
+## 📁 Folder Structure
+
+```text
+src/
+├── app/                  # Next.js App Router (Pages & Layout)
+├── components/           # React Components
+│   ├── animations/       # Framer Motion custom wrappers
+│   ├── cards/            # Bento grids & project cards
+│   ├── layout/           # Navbar, Footer, and SectionWrappers
+│   ├── sections/         # Main page sections (Hero, About, Projects)
+│   └── ui/               # Reusable UI parts (GlassCard, Widgets)
+├── data/                 # Content files (site.ts, portfolio.ts)
+├── hooks/                # Custom React Hooks
+└── types/                # TypeScript Interfaces
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📬 Let's Connect
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Whether you want to discuss a full-stack project, community leadership, event collaboration, or just say hello—my inbox is open.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **GitHub:** [@GomalRajaGula](https://github.com/GomalRajaGula)
+- **LinkedIn:** [Achmal Maulana](https://www.linkedin.com/in/achmal-maulana-3a024235b/)
+- **Email:** achmalmaulana@gmail.com
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Designed & Engineered by Achmal Maulana*

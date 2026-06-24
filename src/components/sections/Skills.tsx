@@ -45,21 +45,12 @@ export default function Skills() {
   } as const;
 
   return (
-    <SectionWrapper id="skills">
-        {/* Editorial Header */}
-        <div className="mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div className="lg:max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500">
-              {config.title}
-            </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white md:text-6xl uppercase">
-              {config.subtitle}
-            </h2>
-          </div>
-          <p className="max-w-md text-xs md:text-sm text-zinc-400 leading-relaxed font-sans">
-            {config.description}
-          </p>
-        </div>
+    <SectionWrapper 
+      id="skills"
+      title={config.title}
+      subtitle={config.subtitle}
+      description={config.description}
+    >
 
         {/* Categories Grid */}
         <motion.div

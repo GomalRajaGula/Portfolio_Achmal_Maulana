@@ -56,16 +56,11 @@ export default function About() {
   } as const;
 
   return (
-    <SectionWrapper id="about">
-        <div className="mb-20">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
-            <span className="w-12 h-[1px] bg-indigo-500" />
-            {config.title}
-          </span>
-          <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white uppercase leading-[1]">
-            {config.subtitle}
-          </h2>
-        </div>
+    <SectionWrapper 
+      id="about"
+      title={config.title}
+      subtitle={config.subtitle}
+    >
         <motion.div
           variants={containerVariants}
           initial="hidden"

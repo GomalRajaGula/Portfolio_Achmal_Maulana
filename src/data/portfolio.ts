@@ -1,4 +1,4 @@
-import { Project, Experience, SkillGroup, BentoItem } from '../types';
+import { Project, Experience, SkillGroup } from '../types';
 
 export const personalInfo = {
   name: 'Achmal Maulana',
@@ -18,7 +18,7 @@ export const projects: Project[] = [
   {
     id: 'siperuka',
     title: 'SIPERUKA',
-    description: 'A comprehensive, web-based letter and permit management system designed to streamline administrative request flows and approvals.',
+    description: 'Campus administration was slowed down by manual paperwork. I engineered a centralized letter and permit management system that digitizes the entire approval pipeline, eliminating physical bottlenecks and drastically reducing processing time for students and staff.',
     tech: ['Next.js', 'Tailwind CSS', 'MySQL'],
     metrics: [
       { label: 'Active Users', value: '1.2k+' },
@@ -30,7 +30,7 @@ export const projects: Project[] = [
   {
     id: 'jkb-fest',
     title: 'JKB Fest Management',
-    description: 'An integrated event and tenant management platform that handles registrations, booth allocations, and vendor coordination.',
+    description: 'Managing a festival with over 5,000 attendees requires flawless logistics. I developed a unified platform to coordinate tenant registrations, dynamic booth allocations, and real-time vendor communication, ensuring zero double-bookings and a seamless operational flow.',
     tech: ['Laravel', 'Bootstrap', 'MySQL'],
     metrics: [
       { label: 'Tenants', value: '50+' },
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     id: 'portfolio',
     title: 'Personal Portfolio',
-    description: 'A premium, interactive developer portfolio showcasing expertise, project timeline, and leadership highlights.',
+    description: 'More than just a resume, this portfolio is a fully custom-built interactive experience designed to reflect my identity as a developer and community leader, prioritizing premium aesthetics and modular architecture.',
     tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     metrics: [
       { label: 'Lighthouse', value: '100' },
@@ -128,47 +128,4 @@ export const skills: SkillGroup[] = [
   },
 ];
 
-export const bentoItems: BentoItem[] = [
-  {
-    id: 'leadership',
-    title: 'Leadership',
-    description: 'Guiding student developer teams, driving HMTRPL initiatives, and cultivating collaborative spaces.',
-    icon: 'Shield',
-    size: 'large',
-  },
-  {
-    id: 'events',
-    title: 'Event Management',
-    description: 'Coordinating high-impact events like JKB Fest with tenant and vendor planning.',
-    icon: 'Calendar',
-    size: 'medium',
-  },
-  {
-    id: 'public-speaking',
-    title: 'Public Speaking',
-    description: 'Presenting technical solutions, pitches, and leading organizational workshops.',
-    icon: 'MessageSquare',
-    size: 'small',
-  },
-  {
-    id: 'entrepreneurship',
-    title: 'Entrepreneurship',
-    description: 'Adapting to logistics, handling micro-ventures, and managing real-world workflows.',
-    icon: 'TrendingUp',
-    size: 'small',
-  },
-  {
-    id: 'team-collaboration',
-    title: 'Collaboration',
-    description: 'Working with developers, designers, and non-technical stakeholders efficiently.',
-    icon: 'Users',
-    size: 'medium',
-  },
-  {
-    id: 'problem-solving',
-    title: 'Problem Solving',
-    description: 'Solving programming bugs and managing complex operational hurdles on-the-go.',
-    icon: 'Brain',
-    size: 'large',
-  },
-];
+

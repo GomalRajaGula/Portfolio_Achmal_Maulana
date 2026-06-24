@@ -19,9 +19,9 @@ export const siteConfig: SiteConfig = {
     }
   },
   projects: {
-    title: 'Work & Builds',
-    subtitle: 'SELECTED PROJECTS',
-    description: 'A curated showcase of software engineering systems I built, blending aesthetics with complex administrative coordination dashboards.',
+    title: 'Real-World Solutions',
+    subtitle: 'ENGINEERING IMPACT',
+    description: 'I build digital systems that solve actual operational bottlenecks. From campus administration to large-scale event logistics, here is how I turn complex workflows into streamlined software.',
   },
   experience: {
     title: 'Career Journey',

@@ -120,22 +120,18 @@ export default function Projects() {
   const { projects: config } = siteConfig;
 
   return (
-    <SectionWrapper id="projects" containerClassName="max-w-[1400px]">
-        {/* Section Header */}
-        <div className="mb-32 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 overflow-visible px-2">
-          <div className="max-w-3xl">
-            <span className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
-              <span className="w-12 h-[1px] bg-indigo-500" />
-              {config.title}
-            </span>
-            <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white uppercase leading-[1]">
-              {config.subtitle.split(' ')[0]} <br className="hidden md:block" /> {config.subtitle.split(' ')[1] || ''}
-            </h2>
-          </div>
-          <p className="max-w-md text-base md:text-lg text-zinc-400 leading-relaxed font-sans pb-4 lg:text-right">
-            {config.description}
-          </p>
-        </div>
+    <SectionWrapper 
+      id="projects" 
+      containerClassName="max-w-[1400px]"
+      title={config.title}
+      subtitle={
+        <>
+          {config.subtitle.split(' ')[0]} <br className="hidden md:block" /> {config.subtitle.split(' ')[1] || ''}
+        </>
+      }
+      description={config.description}
+      headerClassName="mb-32 px-2"
+    >
 
         {/* Projects Stack */}
         <div className="relative flex flex-col pb-32 mt-12">

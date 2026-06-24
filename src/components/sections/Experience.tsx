@@ -121,17 +121,13 @@ export default function Experience() {
   const { experience: config } = siteConfig;
 
   return (
-    <SectionWrapper id="experience" containerClassName="max-w-[1400px]">
-        {/* Header */}
-        <div className="mb-24">
-          <span className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
-            <span className="w-12 h-[1px] bg-indigo-500" />
-            {config.title}
-          </span>
-          <h2 className="mt-6 font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white uppercase leading-[1]">
-            {config.subtitle}
-          </h2>
-        </div>
+    <SectionWrapper 
+      id="experience" 
+      containerClassName="max-w-[1400px]"
+      title={config.title}
+      subtitle={config.subtitle}
+      headerClassName="mb-24"
+    >
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
           

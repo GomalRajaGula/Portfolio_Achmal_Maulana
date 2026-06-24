@@ -24,15 +24,7 @@ export interface SkillGroup {
   items: string[];
 }
 
-export interface BentoItem {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  size: 'small' | 'medium' | 'large';
-}
-
-export interface SectionHeader {
+interface SectionHeader {
   title: string;
   subtitle: string;
   description?: string;
