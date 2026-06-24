@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 import { personalInfo, socialLinks } from '@/data/portfolio';
 import { siteConfig } from '@/data/site';
+import SectionWrapper from '../layout/SectionWrapper';
 import MagneticButton from '../animations/MagneticButton';
 import GlassCard from '../ui/GlassCard';
 
@@ -11,8 +12,7 @@ export default function Contact() {
   const { contact: config } = siteConfig;
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-8 border-t border-white/[0.03]">
-      <div className="mx-auto max-w-4xl">
+    <SectionWrapper id="contact" containerClassName="max-w-4xl">
         <GlassCard className="relative overflow-hidden p-10 md:p-16 text-center hover:border-indigo-500/20 transition-all duration-500">
           {/* Subtle gradient blob behind content */}
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full bg-indigo-500/10 blur-[80px] pointer-events-none" />
@@ -84,7 +84,6 @@ export default function Contact() {
             </div>
           </motion.div>
         </GlassCard>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }

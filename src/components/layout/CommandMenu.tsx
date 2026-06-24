@@ -44,6 +44,21 @@ export default function CommandMenu() {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const navItems = [
+    { name: 'Go to Home', selector: '#hero', icon: Home },
+    { name: 'About Achmal', selector: '#about', icon: Cpu },
+    { name: 'Featured Projects', selector: '#projects', icon: Folder },
+    { name: 'Work & Org Experience', selector: '#experience', icon: Calendar },
+    { name: 'Technical Skills', selector: '#skills', icon: Code },
+    { name: 'Get in Touch', selector: '#contact', icon: Mail },
+  ];
+
+  const socialItems = [
+    { name: 'GitHub profile', url: 'https://github.com/GomalRajaGula', icon: Github },
+    { name: 'LinkedIn profile', url: 'https://www.linkedin.com/in/achmal-maulana-3a024235b/', icon: Linkedin },
+    { name: 'Instagram profile', url: 'https://instagram.com/mal.dubeonjjae', icon: Instagram },
+  ];
+
   return (
     <>
       {/* Floating command helper trigger on screen */}
@@ -93,74 +108,31 @@ export default function CommandMenu() {
                   </Command.Empty>
 
                   <Command.Group heading="Navigation" className="px-2 py-1.5 text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">
-                    <Command.Item
-                      onSelect={() => navigateTo('#hero')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Home className="h-4 w-4 text-zinc-400" />
-                      <span>Go to Home</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => navigateTo('#about')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Cpu className="h-4 w-4 text-zinc-400" />
-                      <span>About Achmal</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => navigateTo('#projects')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Folder className="h-4 w-4 text-zinc-400" />
-                      <span>Featured Projects</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => navigateTo('#experience')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Calendar className="h-4 w-4 text-zinc-400" />
-                      <span>Work & Org Experience</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => navigateTo('#skills')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Code className="h-4 w-4 text-zinc-400" />
-                      <span>Technical Skills</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => navigateTo('#contact')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Mail className="h-4 w-4 text-zinc-400" />
-                      <span>Get in Touch</span>
-                    </Command.Item>
+                    {navItems.map((item) => (
+                      <Command.Item
+                        key={item.selector}
+                        onSelect={() => navigateTo(item.selector)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
+                      >
+                        <item.icon className="h-4 w-4 text-zinc-400" />
+                        <span>{item.name}</span>
+                      </Command.Item>
+                    ))}
                   </Command.Group>
 
                   <div className="h-px bg-white/5 my-1.5" />
 
                   <Command.Group heading="Social Links" className="px-2 py-1.5 text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">
-                    <Command.Item
-                      onSelect={() => openLink('https://github.com/GomalRajaGula')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Github className="h-4 w-4 text-zinc-400" />
-                      <span>GitHub profile</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => openLink('https://www.linkedin.com/in/achmal-maulana-3a024235b/')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Linkedin className="h-4 w-4 text-zinc-400" />
-                      <span>LinkedIn profile</span>
-                    </Command.Item>
-                    <Command.Item
-                      onSelect={() => openLink('https://instagram.com/mal.dubeonjjae')}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
-                    >
-                      <Instagram className="h-4 w-4 text-zinc-400" />
-                      <span>Instagram profile</span>
-                    </Command.Item>
+                    {socialItems.map((item) => (
+                      <Command.Item
+                        key={item.url}
+                        onSelect={() => openLink(item.url)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer"
+                      >
+                        <item.icon className="h-4 w-4 text-zinc-400" />
+                        <span>{item.name}</span>
+                      </Command.Item>
+                    ))}
                   </Command.Group>
                 </Command.List>
               </Command>

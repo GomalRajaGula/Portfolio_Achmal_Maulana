@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '@/data/site';
+import SectionWrapper from '../layout/SectionWrapper';
 import LeadershipCard from '../cards/LeadershipCard';
 import EventManagementCard from '../cards/EventManagementCard';
 import CollaborationCard from '../cards/CollaborationCard';
@@ -11,7 +12,12 @@ import { PublicSpeakingCard, EntrepreneurshipCard } from '../cards/MiniBentoCard
 
 export default function BeyondCoding() {
   const [terminalText, setTerminalText] = useState('npm run dev');
-  const [dots, setDots] = useState<{ x: number; y: number }[]>([]);
+
+  // Static deterministic constellation points for Team Collaboration
+  const dots = Array.from({ length: 8 }).map((_, i) => ({
+    x: ((i * 37) % 80) + 10,
+    y: ((i * 53) % 80) + 10,
+  }));
 
   // Simulated code compiler typing loop
   useEffect(() => {
@@ -34,15 +40,6 @@ export default function BeyondCoding() {
     return () => clearInterval(interval);
   }, []);
 
-  // Floating dots constellation background for Team Collaboration
-  useEffect(() => {
-    const coords = Array.from({ length: 8 }).map(() => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-    }));
-    setDots(coords);
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -63,8 +60,7 @@ export default function BeyondCoding() {
   const { beyondCoding: config } = siteConfig;
 
   return (
-    <section id="beyond-coding" className="relative py-24 px-6 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
-      <div className="mx-auto max-w-7xl">
+    <SectionWrapper id="beyond-coding">
         {/* Header */}
         <div className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
@@ -95,7 +91,6 @@ export default function BeyondCoding() {
           <CollaborationCard itemVariants={itemVariants} dots={dots} />
           <ProblemSolvingCard itemVariants={itemVariants} terminalText={terminalText} />
         </motion.div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { experiences } from '@/data/portfolio';
 import { siteConfig } from '@/data/site';
+import SectionWrapper from '../layout/SectionWrapper';
 import Image from 'next/image';
 import { Experience as ExperienceType } from '@/types';
 import { CheckCircle2 } from 'lucide-react';
@@ -120,8 +121,7 @@ export default function Experience() {
   const { experience: config } = siteConfig;
 
   return (
-    <section id="experience" className="relative py-32 px-4 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
-      <div className="mx-auto max-w-[1400px]">
+    <SectionWrapper id="experience" containerClassName="max-w-[1400px]">
         {/* Header */}
         <div className="mb-24">
           <span className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
@@ -183,7 +183,6 @@ export default function Experience() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -1,7 +1,8 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
 import GlassCard from '../ui/GlassCard';
+import SectionWrapper from '../layout/SectionWrapper';
 import { projects } from '@/data/portfolio';
 import { siteConfig } from '@/data/site';
 import Image from 'next/image';
@@ -119,8 +120,7 @@ export default function Projects() {
   const { projects: config } = siteConfig;
 
   return (
-    <section id="projects" className="relative py-32 px-4 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
-      <div className="mx-auto max-w-[1400px]">
+    <SectionWrapper id="projects" containerClassName="max-w-[1400px]">
         {/* Section Header */}
         <div className="mb-32 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 overflow-visible px-2">
           <div className="max-w-3xl">
@@ -143,7 +143,6 @@ export default function Projects() {
             <ProjectCard key={project.id} project={project} i={i} total={projects.length} />
           ))}
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }

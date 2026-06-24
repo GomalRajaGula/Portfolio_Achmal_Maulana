@@ -37,7 +37,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       clearInterval(timer);
       clearInterval(wordInterval);
     };
-  }, []);
+  }, [words.length]);
 
   const blinds = 5;
 

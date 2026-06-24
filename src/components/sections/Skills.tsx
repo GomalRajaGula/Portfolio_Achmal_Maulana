@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { skills } from '@/data/portfolio';
 import { siteConfig } from '@/data/site';
+import SectionWrapper from '../layout/SectionWrapper';
 import GlassCard from '../ui/GlassCard';
 
 export default function Skills() {
@@ -44,8 +45,7 @@ export default function Skills() {
   } as const;
 
   return (
-    <section id="skills" className="relative py-24 px-6 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
-      <div className="mx-auto max-w-7xl">
+    <SectionWrapper id="skills">
         {/* Editorial Header */}
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div className="lg:max-w-xl">
@@ -103,7 +103,6 @@ export default function Skills() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }

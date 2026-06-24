@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 import { BookOpen, Code, Trophy, Users, Terminal as TerminalIcon } from 'lucide-react';
 import { siteConfig } from '@/data/site';
+import SectionWrapper from '../layout/SectionWrapper';
 import GlassCard from '../ui/GlassCard';
 import GithubWidget from '../ui/GithubWidget';
-import { personalInfo } from '@/data/portfolio';
 
 export default function About() {
   const { about: config } = siteConfig;
@@ -56,8 +56,7 @@ export default function About() {
   } as const;
 
   return (
-    <section id="about" className="relative py-24 px-6 md:px-8 border-t border-white/[0.04] bg-[#09090B]">
-      <div className="mx-auto max-w-7xl">
+    <SectionWrapper id="about">
         <div className="mb-20">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-500 flex items-center gap-4">
             <span className="w-12 h-[1px] bg-indigo-500" />
@@ -137,7 +136,6 @@ export default function About() {
             </motion.div>
           </div>
         </motion.div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }

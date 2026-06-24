@@ -8,7 +8,6 @@ export default function GithubWidget() {
   // Generate random data for a 7x24 grid (columns for space-saving design)
   const columns = 24;
   const rows = 7;
-  const totalSquares = columns * rows;
 
   const contributionLevels = [
     'bg-zinc-900 border-zinc-800',

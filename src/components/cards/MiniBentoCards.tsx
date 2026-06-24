@@ -19,7 +19,7 @@ export function PublicSpeakingCard({ itemVariants }: Props) {
             {Array.from({ length: 5 }).map((_, i) => (
               <motion.div
                 key={i}
-                animate={{ height: [6, Math.random() * 24 + 6, 6] }}
+                animate={{ height: [6, ((i * 7) % 24) + 6, 6] }}
                 transition={{ duration: 0.8 + i * 0.1, repeat: Infinity, ease: 'easeInOut' }}
                 className="w-1 rounded-full bg-indigo-500"
               />
